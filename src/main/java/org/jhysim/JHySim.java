@@ -4,7 +4,7 @@ package org.jhysim;
  * Hello world!
  *
  */
-public class App 
+public class JHySim 
 {
     public static void main( String[] args )
     {
