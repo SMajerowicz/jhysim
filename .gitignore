@@ -30,3 +30,4 @@ target/surefire-reports/TEST-org.jhysim.AppTest.xml
 
 #eclipse
 .settings/
+.classpath
