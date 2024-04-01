@@ -1,5 +1,6 @@
 # Compiled class file
 *.class
+target/
 
 # Log file
 *.log
@@ -26,3 +27,6 @@ replay_pid*
 *.lst
 target/surefire-reports/org.jhysim.AppTest.txt
 target/surefire-reports/TEST-org.jhysim.AppTest.xml
+
+#eclipse
+.settings/
