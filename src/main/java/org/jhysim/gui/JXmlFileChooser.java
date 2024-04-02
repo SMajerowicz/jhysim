@@ -2,7 +2,7 @@ package org.jhysim.gui;
 
 import javax.swing.JFileChooser;
 
-import org.jhysim.gui.filechooser.XmlFileFilter;
+import org.jhysim.gui.filechooser.GenericFileFilter;
 
 /**
  * To only choose an Xml file
@@ -27,6 +27,6 @@ public class JXmlFileChooser extends JFileChooser
 //only files can be selected
 		this.setFileSelectionMode(JFileChooser.FILES_ONLY);
 //add file filters
-		this.addChoosableFileFilter(new XmlFileFilter());
+		this.addChoosableFileFilter(new GenericFileFilter(".xml","Xml files"));
 	}
 }
