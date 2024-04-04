@@ -62,7 +62,7 @@ public class JHySim extends JFrame implements ActionListener, Killable, Simulati
 
 	public final static String NAME = "JHySim"; 
 
-	public final static String PLUGGED_SIMULATIONS_FILENAME = "plugged_simulations.xml";
+	public final static String PLUGGED_SIMULATIONS_FILENAME = "resources/plugged_simulations.xml";
 
 	private JHySimQuitMenuItem quitMenuItem = null;
 

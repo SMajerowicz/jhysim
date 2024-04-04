@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<simulations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema/simulations.xsd">
+	<simulation>org.jhysim.simulation.physics.IsothermalShockTube</simulation>
+	<simulation>org.jhysim.simulation.physics.AdiabaticShockTube</simulation>
+	<simulation>org.jhysim.simulation.physics.IsothermalGasFlow</simulation>
+</simulations>
