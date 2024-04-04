@@ -45,7 +45,7 @@ public abstract class NumericalSchema implements ObservablePattern
  * @param profiles ArrayList list of double array = initial profiles
  * @param variables ArrayList list of Double objects = initial variable value
  */
-	public abstract void initVariables (ArrayList<double[]> profiles, ArrayList<Double[]> variables);
+	public abstract void initVariables (ArrayList<double[]> profiles, ArrayList<Double> variables);
 
 /**
  * To reset the simulations (must be done between two consecutive jobs)

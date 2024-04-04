@@ -26,7 +26,7 @@ import org.xml.sax.SAXException;
  * To manage the parsing of an XML file into a DOM tree or the writing of a DOM tree into an XML file
  * @author Sébastien Majerowicz
  */
-public class XMLDOMFactory
+public class XmlDomFactory
 {
 	private String filename = null;
 
@@ -34,7 +34,7 @@ public class XMLDOMFactory
  * Constructor
  * @param filename String file name
  */
-	public XMLDOMFactory (String filename)
+	public XmlDomFactory (String filename)
 	{
 		this.filename = filename;
 	}

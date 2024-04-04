@@ -34,7 +34,7 @@ import org.jhysim.simulation.Simulation;
 
 import org.jhysim.gui.button.JChangeSimulationRadioButton;
 import org.jhysim.gui.button.JDefineSimulationParametersButton;
-import org.jhysim.gui.forms.JDefineSimulationParametersPanel;
+import org.jhysim.simulation.gui.form.JDefineSimulationParametersPanel;
 
 import org.jhysim.simulation.methods.NumericalSchema;
 
@@ -53,8 +53,8 @@ public class JDefineSimulationParametersFrame extends JFrame implements ActionLi
 	private String[] simulationNames = null;
 
 	private JChangeSimulationRadioButton[] simulationRadioButtons = null;
-	private DefaultComboBoxModel[] numSchemaModels = null;
-	private JComboBox numSchemaComboBox = null;
+	private DefaultComboBoxModel<String>[] numSchemaModels = null;
+	private JComboBox<String> numSchemaComboBox = null;
 	private JPanel defineSimulationPanel = null;
 	private JDefineSimulationParametersPanel[] parametersPanels = null; 
 
@@ -102,12 +102,12 @@ public class JDefineSimulationParametersFrame extends JFrame implements ActionLi
 		NumericalSchema[] schemas = this.simulation.retrieveAvailableSimulationClasses(this.simulationNames);
 		int sizeprof = 0, sizeparam = 0;
 		String[] profnames = null, paramnames = null, paramdesc = null;
-		ArrayList yexts = null;
+		ArrayList<double[]> yexts = null;
 		for (int i = 0 ; i < this.simulationNames.length ; i++)
 		{
 			sizeprof = schemas[i].getNProfiles();
 			profnames = new String[sizeprof];
-			yexts = new ArrayList(sizeprof);
+			yexts = new ArrayList<double[]>(sizeprof);
 			for (int j = 0 ; j < sizeprof ; j++)
 			{
 				profnames[j] = schemas[i].getProfileName(j);
@@ -125,8 +125,8 @@ public class JDefineSimulationParametersFrame extends JFrame implements ActionLi
 
 			this.simulationRadioButtons[i] = new JChangeSimulationRadioButton(this,schemas[i].getName());
 			this.simulationRadioButtons[i].addActionListener(this);
-			this.numSchemaModels[i] = new DefaultComboBoxModel(schemas[i].getNumericalSchemaDescriptions());
-			this.parametersPanels[i] = new JDefineSimulationParametersPanel(this,profnames,yexts,paramnames,paramdesc);
+			this.numSchemaModels[i] = new DefaultComboBoxModel<String>(schemas[i].getNumericalSchemaDescriptions());
+			this.parametersPanels[i] = new JDefineSimulationParametersPanel(profnames,yexts,paramnames,paramdesc);
 
 			simulationBg.add(this.simulationRadioButtons[i]);
 		}
@@ -150,7 +150,7 @@ public class JDefineSimulationParametersFrame extends JFrame implements ActionLi
 
 		simulationPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK,1),"Simulations",TitledBorder.RIGHT,TitledBorder.TOP));
 
-		this.numSchemaComboBox = new JComboBox(this.numSchemaModels[0]);
+		this.numSchemaComboBox = new JComboBox<String>(this.numSchemaModels[0]);
 
 		JPanel numPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		numPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK,1),"Numerical schema",TitledBorder.RIGHT,TitledBorder.TOP));
@@ -274,7 +274,7 @@ public class JDefineSimulationParametersFrame extends JFrame implements ActionLi
  * @return ArrayList list of double array
  * @throws NumberFormatException the spatial resolution must be between 0.0 and 1.0 strictly
  */
-	public final ArrayList getProfiles (double dx) throws NumberFormatException
+	public final ArrayList<double[]> getProfiles (double dx) throws NumberFormatException
 	{
 		int index = this.getSelectedRadioButtonIndex();
 		return this.parametersPanels[index].getProfiles(dx);

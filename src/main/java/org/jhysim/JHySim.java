@@ -30,6 +30,7 @@ import org.jhysim.gui.menuitem.JHySimPlugNewSimulationMenuItem;
 import org.jhysim.gui.menuitem.JHySimQuitMenuItem;
 import org.jhysim.gui.menuitem.JHySimResumeMenuItem;
 import org.jhysim.gui.menuitem.JHySimSaveDataMenuItem;
+import org.jhysim.gui.menuitem.JHySimSaveSimulationParametersMenuItem;
 import org.jhysim.gui.menuitem.JHySimSaveSimulatorParametersMenuItem;
 import org.jhysim.gui.menuitem.JHySimShowDataMenuItem;
 import org.jhysim.gui.menuitem.JHySimStopMenuItem;
@@ -45,7 +46,7 @@ import org.jhysim.simulation.Simulator;
 
 import org.jhysim.gui.JVisualizeProfilesFrame;
 
-import org.jhysim.gui.simulation.io.XMLPluggedSimulationFile;
+import org.jhysim.simulation.io.XmlPluggedSimulationFile;
 
 import org.jhysim.simulation.methods.NumericalSchema;
 
@@ -57,6 +58,8 @@ import org.xml.sax.SAXException;
  */
 public class JHySim extends JFrame implements ActionListener, Killable, Simulation, WindowListener
 {
+	private static final long serialVersionUID = 4348789202666451257L;
+
 	public final static String NAME = "JHySim"; 
 
 	public final static String PLUGGED_SIMULATIONS_FILENAME = "plugged_simulations.xml";
@@ -351,7 +354,7 @@ public class JHySim extends JFrame implements ActionListener, Killable, Simulati
  */
 	public String[] retrieveAvailableSimulations (String xmlfilename)
 	{
-		XMLPluggedSimulationFile jpsf = new XMLPluggedSimulationFile(xmlfilename);
+		XmlPluggedSimulationFile jpsf = new XmlPluggedSimulationFile(xmlfilename);
 		String[] sims = null;
 
 		try

@@ -7,7 +7,7 @@ import org.jhysim.JHySim;
 
 import org.jhysim.pattern.CommandPattern;
 
-import org.jhysim.gui.simulation.JAnalyseProfilesFrame;
+import org.jhysim.gui.JAnalyseProfilesFrame;
 
 /**
  * To visualize (again) the date after a simulation
@@ -15,6 +15,8 @@ import org.jhysim.gui.simulation.JAnalyseProfilesFrame;
  */
 public class JHySimAnalyseDataMenuItem extends JHySimSuperMenuItem implements CommandPattern
 {
+	private static final long serialVersionUID = -7232849834039770987L;
+
 /**
  * Constructor
  * @param text String

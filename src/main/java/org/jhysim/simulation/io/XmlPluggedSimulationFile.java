@@ -1,4 +1,4 @@
-package org.jhysim.io;
+package org.jhysim.simulation.io;
 
 import java.io.IOException;
 
@@ -18,13 +18,13 @@ import org.xml.sax.SAXException;
  * To manage the plugged simulations
  * @author Sébastien Majerowicz
  */
-public class XMLPluggedSimulationFile extends XmlDomFactory
+public class XmlPluggedSimulationFile extends XmlDomFactory
 {
 /**
  * Constructor
  * @param filename String
  */
-	public XMLPluggedSimulationFile (String filename)
+	public XmlPluggedSimulationFile (String filename)
 	{
 		super(filename);
 	}
