@@ -11,7 +11,7 @@ import org.jhysim.simulation.gui.form.JDefineSimulationParametersPanel;
  * To change the selected profile
  * @author Sébastien Majerowicz
  */
-public class JChangeSimulationProfileComboBox extends JComboBox implements CommandPattern
+public class JChangeSimulationProfileComboBox extends JComboBox<String> implements CommandPattern
 {
 	private static final long serialVersionUID = -8430495713693712676L;
 	private JDefineSimulationParametersPanel parent = null;
@@ -21,7 +21,7 @@ public class JChangeSimulationProfileComboBox extends JComboBox implements Comma
  * @param parent JDefineSimulationParametersPanel
  * @param model DefaultComboBoxModel
  */
-	public JChangeSimulationProfileComboBox (JDefineSimulationParametersPanel parent, DefaultComboBoxModel model)
+	public JChangeSimulationProfileComboBox (JDefineSimulationParametersPanel parent, DefaultComboBoxModel<String> model)
 	{
 		super(model);
 

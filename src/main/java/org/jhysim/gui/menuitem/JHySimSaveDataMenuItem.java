@@ -20,6 +20,8 @@ import org.jhysim.gui.JDataTableChooser;
  */
 public class JHySimSaveDataMenuItem extends JHySimSuperMenuItem implements CommandPattern
 {
+	private static final long serialVersionUID = 8454755555563835748L;
+
 /**
  * Constructor
  * @param text String

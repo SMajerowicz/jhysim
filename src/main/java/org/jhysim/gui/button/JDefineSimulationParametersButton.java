@@ -1,5 +1,6 @@
 package org.jhysim.gui.button;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -49,7 +50,7 @@ public class JDefineSimulationParametersButton extends JButton implements Comman
 		{
 			for (int i = 0 ; i < doubles.length ; i++)
 			{
-				params[i] = new Double(doubles[i]);
+				params[i] = Double.valueOf(doubles[i]);
 			}
 			profiles = this.parent.getProfiles(params[0].doubleValue());
 			succeed = true;
@@ -67,8 +68,8 @@ public class JDefineSimulationParametersButton extends JButton implements Comman
 
 			try
 			{
-				Class newclass = Class.forName(this.parent.getSelectedSimulationName());
-				schema = (NumericalSchema)newclass.newInstance();
+				Class<?> newclass = Class.forName(this.parent.getSelectedSimulationName());
+				schema = (NumericalSchema)newclass.getDeclaredConstructor().newInstance();
 				schema.initVariables(profiles,al);
 				schema.setchoosenSchema(this.parent.getSelectedNumericalSchema());
 				this.parent.getSimulation().setSchema(schema);
@@ -79,6 +80,14 @@ public class JDefineSimulationParametersButton extends JButton implements Comman
 				e.printStackTrace();
 			}
 			catch (InstantiationException e)
+			{
+				e.printStackTrace();
+			}
+			catch (InvocationTargetException e)
+			{
+				e.printStackTrace();
+			}
+			catch (NoSuchMethodException e)
 			{
 				e.printStackTrace();
 			}

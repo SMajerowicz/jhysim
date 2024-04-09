@@ -1,7 +1,7 @@
 package org.jhysim.gui.menuitem;
 
 import java.io.IOException;
-
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import javax.swing.Icon;
@@ -74,11 +74,23 @@ public class JHySimOpenSimulationParametersMenuItem extends JHySimSuperMenuItem 
 				succeed = false;
 				try
 				{
-					Class newclass = Class.forName(xspf.getSimulationName());
-					schema = (NumericalSchema)newclass.newInstance();
+					Class<?> newclass = Class.forName(xspf.getSimulationName());
+					schema = (NumericalSchema)newclass.getDeclaredConstructor().newInstance();
 					succeed = true;
 				}
 				catch (ClassNotFoundException e)
+				{
+					e.printStackTrace();
+				}
+				catch (SecurityException e)
+				{
+					e.printStackTrace();
+				}
+				catch (InvocationTargetException e)
+				{
+					e.printStackTrace();
+				}
+				catch (NoSuchMethodException e)
 				{
 					e.printStackTrace();
 				}

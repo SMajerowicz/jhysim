@@ -144,7 +144,7 @@ public class XmlSimulationParametersFile extends XmlDomFactory
 		this.parameters = new ArrayList<Double>(0);
 		while ((ele != null) && ele.getNodeName().equals("parameter"))
 		{
-			this.parameters.add(new Double(ele.getAttributes().getNamedItem("value").getNodeValue()));
+			this.parameters.add(Double.valueOf(ele.getAttributes().getNamedItem("value").getNodeValue()));
 
 			ele = ele.getNextSibling();
 		}

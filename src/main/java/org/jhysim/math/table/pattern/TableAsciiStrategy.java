@@ -47,7 +47,7 @@ public class TableAsciiStrategy extends TableStrategy
 		while (st.nextToken() != StreamTokenizer.TT_EOL)
 		{
 			data.add(new ArrayList<Double>(0));
-			((ArrayList<Double>)data.get(index)).add(new Double(st.nval));
+			((ArrayList<Double>)data.get(index)).add(Double.valueOf(st.nval));
 			index++;
 		}
 
@@ -60,7 +60,7 @@ public class TableAsciiStrategy extends TableStrategy
 			}
 			else
 			{
-				((ArrayList<Double>)data.get(index)).add(new Double(st.nval));
+				((ArrayList<Double>)data.get(index)).add(Double.valueOf(st.nval));
 				index++;
 			}
 		}

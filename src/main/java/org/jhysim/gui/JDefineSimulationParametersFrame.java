@@ -53,7 +53,7 @@ public class JDefineSimulationParametersFrame extends JFrame implements ActionLi
 	private String[] simulationNames = null;
 
 	private JChangeSimulationRadioButton[] simulationRadioButtons = null;
-	private DefaultComboBoxModel<String>[] numSchemaModels = null;
+	private ArrayList <DefaultComboBoxModel<String>> numSchemaModelList = null;
 	private JComboBox<String> numSchemaComboBox = null;
 	private JPanel defineSimulationPanel = null;
 	private JDefineSimulationParametersPanel[] parametersPanels = null; 
@@ -94,7 +94,7 @@ public class JDefineSimulationParametersFrame extends JFrame implements ActionLi
 		this.simulationNames = simulationNames;
 
 		this.simulationRadioButtons = new JChangeSimulationRadioButton[this.simulationNames.length];
-		this.numSchemaModels = new DefaultComboBoxModel[this.simulationNames.length];
+		this.numSchemaModelList = new ArrayList<DefaultComboBoxModel<String>>(this.simulationNames.length);
 		this.parametersPanels = new JDefineSimulationParametersPanel[this.simulationNames.length];
 
 		ButtonGroup simulationBg = new ButtonGroup();
@@ -125,7 +125,7 @@ public class JDefineSimulationParametersFrame extends JFrame implements ActionLi
 
 			this.simulationRadioButtons[i] = new JChangeSimulationRadioButton(this,schemas[i].getName());
 			this.simulationRadioButtons[i].addActionListener(this);
-			this.numSchemaModels[i] = new DefaultComboBoxModel<String>(schemas[i].getNumericalSchemaDescriptions());
+			this.numSchemaModelList.add(new DefaultComboBoxModel<String>(schemas[i].getNumericalSchemaDescriptions()));
 			this.parametersPanels[i] = new JDefineSimulationParametersPanel(profnames,yexts,paramnames,paramdesc);
 
 			simulationBg.add(this.simulationRadioButtons[i]);
@@ -150,7 +150,7 @@ public class JDefineSimulationParametersFrame extends JFrame implements ActionLi
 
 		simulationPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK,1),"Simulations",TitledBorder.RIGHT,TitledBorder.TOP));
 
-		this.numSchemaComboBox = new JComboBox<String>(this.numSchemaModels[0]);
+		this.numSchemaComboBox = new JComboBox<String>(this.numSchemaModelList.get(0));
 
 		JPanel numPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		numPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK,1),"Numerical schema",TitledBorder.RIGHT,TitledBorder.TOP));
@@ -258,7 +258,7 @@ public class JDefineSimulationParametersFrame extends JFrame implements ActionLi
 //search for the selected radio button
 		int index = this.getSelectedRadioButtonIndex();
 
-		this.numSchemaComboBox.setModel(this.numSchemaModels[index]);
+		this.numSchemaComboBox.setModel(this.numSchemaModelList.get(index));
 
 		this.defineSimulationPanel.add(this.parametersPanels[index],BorderLayout.CENTER);
 

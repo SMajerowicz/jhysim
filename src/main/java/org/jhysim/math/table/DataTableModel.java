@@ -78,14 +78,14 @@ public class DataTableModel extends DefaultTableModel
  */
 	public final Object getValueAt (int row, int col) throws IndexOutOfBoundsException
 	{
-		return new Double(this.table.getValue(row,col));
+		return Double.valueOf(this.table.getValue(row,col));
 	}
 /**
  * To retrieve the class of a column
  * @param int
  * @return Class
  */
-	public final Class getColumnClass (int c)
+	public final Class<?> getColumnClass (int c)
 	{
 		return this.getValueAt(0,c).getClass();
 	}
@@ -112,7 +112,7 @@ public class DataTableModel extends DefaultTableModel
 		{
 			for (int i = 0 ; i < nrows ; i++)
 			{
-				data[i][j] = new Double(this.table.getValue(i,j));
+				data[i][j] = Double.valueOf(this.table.getValue(i,j));
 			}
 			titles[j] = this.table.getcolumnTitle(j);
 			if (this.table.getcolumnUnity(j) != DataTable.NO_UNITY)

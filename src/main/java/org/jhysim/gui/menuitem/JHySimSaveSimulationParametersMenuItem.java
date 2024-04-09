@@ -69,7 +69,7 @@ public class JHySimSaveSimulationParametersMenuItem extends JHySimSuperMenuItem 
 					ArrayList<Double> params = new ArrayList<Double>(size);
 					for (int i = 0 ; i < size ; i++)
 					{
-						params.add(new Double(schema.getParameter(i)));
+						params.add(Double.valueOf(schema.getParameter(i)));
 					}
 
 					try

@@ -9,6 +9,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -62,7 +63,7 @@ public class JHySim extends JFrame implements ActionListener, Killable, Simulati
 
 	public final static String NAME = "JHySim"; 
 
-	public final static String PLUGGED_SIMULATIONS_FILENAME = "resources/plugged_simulations.xml";
+	public final static String PLUGGED_SIMULATIONS_FILENAME = "resources/simulations/plugged_simulations.xml";
 
 	private JHySimQuitMenuItem quitMenuItem = null;
 
@@ -389,10 +390,22 @@ public class JHySim extends JFrame implements ActionListener, Killable, Simulati
 		{
 			try
 			{
-				Class newclass = Class.forName(classNames[i]);
-				simulations[i] = (NumericalSchema)newclass.newInstance();
+				Class<?> newclass = Class.forName(classNames[i]);
+				simulations[i] = (NumericalSchema)newclass.getDeclaredConstructor().newInstance();
 			}
 			catch (ClassNotFoundException e)
+			{
+				e.printStackTrace();
+			}
+			catch (SecurityException e)
+			{
+				e.printStackTrace();
+			}
+			catch (InvocationTargetException e)
+			{
+				e.printStackTrace();
+			}
+			catch (NoSuchMethodException e)
 			{
 				e.printStackTrace();
 			}
